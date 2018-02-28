@@ -1,0 +1,29 @@
+{
+    "manifest_version":2,
+    "name":"Heart Beat",
+    "description":"一键完成所有点赞,取消点赞！(目前只支持 qq zone，后续更新Facebook，Twitter等。。 感谢你的使用。)",
+    "version":"0.99.1",
+    "browser_action":{
+	"default_title":"Heart Beat is Auto Like!"	
+	},
+    "background":{
+	"persistent": false,
+	"scripts": [ "js/background.js" ]
+	},
+    "content_scripts":[
+	{
+	    "matches":["https://user.qzone.qq.com/*"],
+	    "js":["js/content_script.js"]
+	}],
+    "icons":{
+	"16":"icon/0/heartbeat_16.png",
+	"48":"icon/0/heartbeat_48.png",
+	"128":"icon/0/heartbeat_128.png"
+	},
+    "permissions":[
+	"tabs",
+	"activeTab",
+	"storage"
+	]
+
+}
