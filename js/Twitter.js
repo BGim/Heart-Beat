@@ -1,21 +1,21 @@
-
-//content_script.js auto Click Your Heart Beat For qzone
-
+//Twitter.js auto Click Your Heart Beat For twitter
 
 function autoclick() {  
-	var Heart=document.getElementsByClassName('item qz_like_btn_v3'); 
-	for(var i=0;i<Heart.length;i++){ 
-		if(Heart[i].attributes[6].value=='like'){ 
-			Heart[i].firstChild.click();
+	var Heart = document.getElementsByClassName('HeartAnimation'); 	
+	for(var i=0;i<Heart.length;i++){
+		if(Heart[i].nextElementSibling.innerText=='Like'){ 
+			Heart[i].click();
+			Heart[i].nextElementSibling.innerText='Liked'
 		}
 	}
 };
 
 function cancelclick() {  
-	var Heart=document.getElementsByClassName('item qz_like_btn_v3'); 
-	for(var i=0;i<Heart.length;i++){ 
-		if(Heart[i].attributes[6].value=='cancellike'){ 
-			Heart[i].firstChild.click();
+	var Heart = document.getElementsByClassName('HeartAnimation'); 	
+	for(var i=0;i<Heart.length;i++){
+		if(Heart[i].nextElementSibling.innerText=='Liked'){ 
+			Heart[i].click();
+			Heart[i].nextElementSibling.innerText='Like' 
 		}
 	}
 }
@@ -43,7 +43,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 			cancellike_flag = setInterval(function(){cancelclick()/*console.log('cancellike....');*/},1500); 	
 				    		
 		}else if (message.action === 'Stop'){
-			//console.log(message.action);
 			//clearInterval(like_flag);
 			clearInterval(cancellike_flag);
 			

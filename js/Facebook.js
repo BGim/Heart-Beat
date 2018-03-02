@@ -1,21 +1,19 @@
-
-//content_script.js auto Click Your Heart Beat For qzone
-
+//Facebook.js auto Click Your Heart Beat For facebook
 
 function autoclick() {  
-	var Heart=document.getElementsByClassName('item qz_like_btn_v3'); 
-	for(var i=0;i<Heart.length;i++){ 
-		if(Heart[i].attributes[6].value=='like'){ 
-			Heart[i].firstChild.click();
+	var Heart=document.getElementsByClassName('_khz _4sz1 _4rw5 _3wv2'); 	
+	for(var i=0;i<Heart.length;i++){
+		if(Heart[i].firstChild.attributes[0].value=='false'){ 
+			Heart[i].firstChild.click(); 
 		}
 	}
 };
 
 function cancelclick() {  
-	var Heart=document.getElementsByClassName('item qz_like_btn_v3'); 
-	for(var i=0;i<Heart.length;i++){ 
-		if(Heart[i].attributes[6].value=='cancellike'){ 
-			Heart[i].firstChild.click();
+	var Heart=document.getElementsByClassName('_khz _4sz1 _4rw5 _3wv2'); 	
+	for(var i=0;i<Heart.length;i++){
+		if(Heart[i].firstChild.attributes[0].value=='true'){ 
+			Heart[i].firstChild.click(); 
 		}
 	}
 }
@@ -43,7 +41,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 			cancellike_flag = setInterval(function(){cancelclick()/*console.log('cancellike....');*/},1500); 	
 				    		
 		}else if (message.action === 'Stop'){
-			//console.log(message.action);
 			//clearInterval(like_flag);
 			clearInterval(cancellike_flag);
 			
